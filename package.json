@@ -1,0 +1,35 @@
+{
+  "name": "chatgpt-question-directory",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.1",
+    "@types/react": "^18.0.38",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@unocss/preset-attributify": "^0.51.12",
+    "@unocss/transformer-variant-group": "^0.51.12",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "typescript": "^5.0.4",
+    "unocss": "^0.51.12",
+    "unocss-preset-scrollbar": "^0.2.1",
+    "vite": "^4.3.1"
+  }
+}
