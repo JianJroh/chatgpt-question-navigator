@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { queryChatContainer } from './helpers';
 import { useQuestions } from './hooks/useQuestions';
 import { useActiveQuestionIndex } from './hooks/useActiveQuestionIndex';
+import { useHovering } from './hooks/common/useHovering';
 
 function App() {
   const questions = useQuestions();
   const activeQuestionIndex = useActiveQuestionIndex();
-  const [show, setShow] = useState(true);
+  const [elRef, hovering] = useHovering<HTMLUListElement>();
+  const [open, setOpen] = useState(true);
+  const show = useMemo(() => open || hovering, [hovering, open]);
 
   const handleClickList: React.MouseEventHandler<HTMLUListElement> = (event) => {
     if (event.target instanceof HTMLLIElement) {
@@ -16,7 +19,7 @@ function App() {
   };
 
   const handleClickEye = () => {
-    setShow(!show);
+    setOpen(!open);
   };
 
   return (
@@ -35,6 +38,7 @@ function App() {
         </div>
         <div className="relative after:(content-[''] absolute bottom-0 right-4px w-full h-.7em bg-gradient-to-t from-white from-opacity-90 to-white to-opacity-20)">
           <ul
+            ref={elRef}
             className="max-h-[var(--app-max-list-height)] list-inside list-disc overflow-y-auto "
             scrollbar={`~ rounded transition-all thumb-color-transparent hover:thumb-color-gray-300  track-color-transparent ${
               show ? 'w-4px' : 'w-0'
