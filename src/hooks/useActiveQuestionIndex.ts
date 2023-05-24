@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { queryChatContainer, queryQuestionEls } from '../helpers';
-import { useScroll } from './common/useScroll';
+import { useEventListener } from './common/useEventListener';
 
 export function useActiveQuestionIndex() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -14,11 +14,11 @@ export function useActiveQuestionIndex() {
     }
   };
 
-  useScroll(scrollContainer, findActiveIndex);
+  useEventListener(scrollContainer, 'scroll', findActiveIndex);
 
   useEffect(() => {
     findActiveIndex();
-  });
+  }, []);
 
   return activeIndex;
 }
