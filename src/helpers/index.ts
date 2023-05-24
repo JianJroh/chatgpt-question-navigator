@@ -1,5 +1,5 @@
 export function queryChatContainer() {
-  const CHAT_LIST_EL_CLASS = 'flex flex-col items-center text-sm';
+  const CHAT_LIST_EL_CLASS = 'flex flex-col text-sm';
   return document
     .querySelector('main')
     ?.querySelector<HTMLDivElement>(className2Selector(CHAT_LIST_EL_CLASS));
