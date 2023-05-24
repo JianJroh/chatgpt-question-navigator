@@ -29,3 +29,11 @@ export function load() {
   mount(dom);
   document.body.append(dom);
 }
+
+export function remove() {
+  const target = document.querySelector(`[${DOM_MARK}]`);
+  if (!target) {
+    return;
+  }
+  target.remove();
+}

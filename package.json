@@ -30,6 +30,7 @@
     "typescript": "^5.0.4",
     "unocss": "^0.51.12",
     "unocss-preset-scrollbar": "^0.2.1",
-    "vite": "^4.3.1"
+    "vite": "^4.3.1",
+    "vite-plugin-monkey": "^3.2.1"
   }
 }
