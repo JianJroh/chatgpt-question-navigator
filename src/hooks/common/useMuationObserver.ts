@@ -7,6 +7,6 @@ export function useMutationObserver(cb: MutationCallback) {
     return () => {
       ob.current?.disconnect();
     };
-  });
+  }, [cb]);
   return ob;
 }
