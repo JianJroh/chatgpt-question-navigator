@@ -20,7 +20,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext ts,tsx",
-    "preview": "vite preview"
+    "release": "npx bumpp --commit --tag --push"
   },
   "dependencies": {
     "react": "^18.2.0",
