@@ -13,8 +13,8 @@ export default defineConfig({
       entry: 'src/load.ts',
       userscript: {
         name: {
-          '': 'ChatGPT Question Navigator',
-          zh: 'ChatGPT 问题导航',
+          '': 'ChatGPT Question Navigation sidebar',
+          zh: 'ChatGPT 问题导航侧边栏',
         },
         description: {
           '': 'It provides a convenient question sidebar directory for the ChatGPT official website. It automatically collects the questions asked by users on the current session page and displays them on the sidebar, enabling quick navigation to the location of historical questions.',
@@ -23,6 +23,7 @@ export default defineConfig({
         namespace: 'npm/chatgpt-question-navigator',
         match: ['https://chat.openai.com/**'],
         author: 'okokdi',
+        supportURL: 'https://github.com/JianJroh/chatgpt-question-navigator/issues',
       },
     }),
   ],
