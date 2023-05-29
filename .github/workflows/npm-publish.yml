@@ -1,6 +1,11 @@
 name: npm publish
 
 on:
+  workflow_run:
+    workflows:
+      - 'CI'
+    types:
+      - completed
   push:
     tags:
       - 'v*.*.*'
@@ -23,15 +28,6 @@ jobs:
           node-version: 18
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Install Dependencies
-        run: pnpm i
-
-      - name: Check lint
-        run: pnpm lint
-
-      - name: Build
-        run: pnpm build
 
       - name: Publish to NPM
         env:
