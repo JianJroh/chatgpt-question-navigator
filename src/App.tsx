@@ -3,6 +3,7 @@ import { queryChatContainer } from './helpers';
 import { useQuestions } from './hooks/useQuestions';
 import { useActiveQuestionIndex } from './hooks/useActiveQuestionIndex';
 import { useHovering } from './hooks/common/useHovering';
+import { useMountedCallbackValue } from './hooks/common/useMountedCallbackValue';
 
 function App() {
   const questions = useQuestions();
@@ -11,10 +12,12 @@ function App() {
   const [open, setOpen] = useState(true);
   const show = useMemo(() => open || hovering, [hovering, open]);
 
+  const chatContainer = useMountedCallbackValue(queryChatContainer);
+
   const handleClickList: React.MouseEventHandler<HTMLUListElement> = (event) => {
     if (event.target instanceof HTMLLIElement) {
       const targetIndex = Number(event.target.dataset.index);
-      queryChatContainer()?.children[targetIndex * 2].scrollIntoView({ behavior: 'smooth' });
+      chatContainer.current?.children[targetIndex * 2].scrollIntoView({ behavior: 'smooth' });
     }
   };
 

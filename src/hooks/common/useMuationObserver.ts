@@ -1,12 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, MutableRefObject } from 'react';
 
-export function useMutationObserver(cb: MutationCallback) {
-  const ob = useRef<MutationObserver>();
+type MaybeRefObject<T> = T | MutableRefObject<T>;
+
+export function useMutationObserver(
+  target: MaybeRefObject<HTMLElement | null | undefined>,
+  callback: MutationCallback,
+  options: MutationObserverInit
+) {
+  const observer = useRef<MutationObserver>();
+
   useEffect(() => {
-    ob.current = new MutationObserver(cb);
+    observer.current = new MutationObserver(callback);
+
+    const targetEl = target && ('current' in target ? target.current : target);
+
+    if (targetEl) {
+      observer.current.observe(targetEl, options);
+    }
+
     return () => {
-      ob.current?.disconnect();
+      observer.current?.disconnect();
+      observer.current = undefined;
     };
-  }, [cb]);
-  return ob;
+  }, [target, callback, options]);
 }

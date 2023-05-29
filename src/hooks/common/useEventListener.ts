@@ -1,9 +1,9 @@
-import { type RefObject, useCallback, useEffect } from 'react';
+import { type MutableRefObject, useCallback, useEffect } from 'react';
 
-type MaybeRefObject<T> = T | RefObject<T>;
+type MaybeRefObject<T> = T | MutableRefObject<T>;
 
 export function useEventListener<K extends keyof HTMLElementEventMap>(
-  el: MaybeRefObject<HTMLElement | null>,
+  target: MaybeRefObject<HTMLElement | null | undefined>,
   type: K,
   listener: (e: HTMLElementEventMap[K]) => void
 ) {
@@ -17,7 +17,7 @@ export function useEventListener<K extends keyof HTMLElementEventMap>(
   );
 
   useEffect(() => {
-    const targetEl = el && ('current' in el ? el.current : el);
+    const targetEl = target && ('current' in target ? target.current : target);
 
     if (!targetEl) {
       return;
@@ -28,5 +28,5 @@ export function useEventListener<K extends keyof HTMLElementEventMap>(
     return () => {
       targetEl.removeEventListener(type, _listener);
     };
-  }, [_listener, el, type]);
+  }, [_listener, target, type]);
 }
