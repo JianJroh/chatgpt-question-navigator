@@ -11,4 +11,4 @@ It provides a convenient question sidebar directory for the ChatGPT official web
 
 ## Demo
 
-![demo](./demo/demo.gif)
+![demo](https://raw.githubusercontent.com/JianJroh/chatgpt-question-navigator/main/assets/demo.gif)
