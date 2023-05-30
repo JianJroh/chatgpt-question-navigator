@@ -6,8 +6,6 @@ on:
       - 'v*.*.*'
 
 jobs:
-  ci-check:
-    uses: ./.github/workflows/ci.yml
   npm-publish:
     runs-on: ubuntu-latest
     permissions:
@@ -25,6 +23,15 @@ jobs:
           node-version: 18
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Check lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
 
       - name: Publish to NPM
         env:
