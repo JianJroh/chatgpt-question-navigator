@@ -25,6 +25,7 @@ export default defineConfig({
         match: ['https://chat.openai.com/**'],
         author: 'okokdi',
         supportURL: 'https://github.com/JianJroh/chatgpt-question-navigator/issues',
+        license: 'GPL-3.0-or-later',
       },
     }),
   ],
