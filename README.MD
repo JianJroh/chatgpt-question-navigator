@@ -4,3 +4,11 @@ It provides a convenient question sidebar directory for the ChatGPT official web
 
 [![Greasy Fork](https://img.shields.io/greasyfork/v/467387)](https://greasyfork.org/scripts/467387-chatgpt-question-navigation-sidebar)
 [![CI](https://github.com/JianJroh/chatgpt-question-navigator/actions/workflows/ci.yml/badge.svg)](https://github.com/JianJroh/chatgpt-question-navigator/actions/workflows/ci.yml)
+
+## Usage
+
+[Install by Greasy Fork](https://greasyfork.org/zh-CN/scripts/467387-chatgpt-question-navigation-sidebar)
+
+## Demo
+
+![demo](./demo/demo.gif)
