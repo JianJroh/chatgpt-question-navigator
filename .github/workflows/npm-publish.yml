@@ -1,16 +1,13 @@
 name: npm publish
 
 on:
-  workflow_run:
-    workflows:
-      - 'CI'
-    types:
-      - completed
   push:
     tags:
       - 'v*.*.*'
 
 jobs:
+  ci-check:
+    uses: ./.github/workflows/ci.yml
   npm-publish:
     runs-on: ubuntu-latest
     permissions:
