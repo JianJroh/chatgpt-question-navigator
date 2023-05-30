@@ -1,7 +1,7 @@
 {
   "name": "chatgpt-question-navigator",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "packageManager": "pnpm@8.6.0",
   "type": "module",
   "files": [
