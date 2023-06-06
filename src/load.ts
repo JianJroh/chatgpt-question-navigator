@@ -6,13 +6,16 @@ let conversationId: string | null = null;
 
 setInterval(() => {
   const latestConversationId = getConversationIdByUrl();
-  if (conversationId !== latestConversationId) {
+
+  const hasQuestion = queryChatContainer() != null && queryQuestionEls().length > 0;
+
+  if (conversationId !== latestConversationId || !hasQuestion) {
     conversationId = latestConversationId;
     remove();
     loaded = false;
   }
 
-  if (!loaded && queryChatContainer() && queryQuestionEls().length > 0) {
+  if (!loaded && hasQuestion) {
     load();
     loaded = true;
   }
