@@ -17,10 +17,6 @@ export function queryQuestionEls() {
   }, []);
 }
 
-export function getQuestions() {
-  return queryQuestionEls().map((q) => q.innerText.trim() ?? '');
-}
-
 export function className2Selector(className: string) {
   return className
     .split(' ')

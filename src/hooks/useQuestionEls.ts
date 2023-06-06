@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useMutationObserver } from './common/useMuationObserver';
-import { getQuestions, queryChatContainer } from '../helpers';
+import { queryChatContainer, queryQuestionEls } from '../helpers';
 import { useMountedCallbackValue } from './common/useMountedCallbackValue';
 
-export function useQuestions() {
-  const [questions, setQuestions] = useState(getQuestions());
+export function useQuestionEls() {
+  const [questionEls, setQuestionEls] = useState(queryQuestionEls());
+
+  const questions = useMemo(() => questionEls.map((q) => q.innerText.trim() ?? ''), [questionEls]);
 
   const chatContainer = useMountedCallbackValue(queryChatContainer);
 
@@ -13,7 +15,7 @@ export function useQuestions() {
     (mutationsList) => {
       for (const mutation of mutationsList) {
         if (mutation.type === 'childList') {
-          setQuestions(getQuestions());
+          setQuestionEls(queryQuestionEls());
         }
       }
     },
@@ -22,5 +24,5 @@ export function useQuestions() {
     }
   );
 
-  return questions;
+  return { questionEls, questions };
 }

@@ -1,23 +1,19 @@
 import { useMemo, useState } from 'react';
-import { queryQuestionEls } from './helpers';
-import { useQuestions } from './hooks/useQuestions';
+import { useQuestionEls } from './hooks/useQuestionEls';
 import { useActiveQuestionIndex } from './hooks/useActiveQuestionIndex';
 import { useHovering } from './hooks/common/useHovering';
-import { useMountedCallbackValue } from './hooks/common/useMountedCallbackValue';
 
 function App() {
-  const questions = useQuestions();
+  const { questions, questionEls } = useQuestionEls();
   const activeQuestionIndex = useActiveQuestionIndex();
   const [elRef, hovering] = useHovering<HTMLUListElement>();
   const [open, setOpen] = useState(true);
   const show = useMemo(() => open || hovering, [hovering, open]);
 
-  const questionEls = useMountedCallbackValue(queryQuestionEls);
-
   const handleClickList: React.MouseEventHandler<HTMLUListElement> = (event) => {
     if (event.target instanceof HTMLLIElement) {
       const targetIndex = Number(event.target.dataset.index);
-      questionEls.current?.[targetIndex]?.scrollIntoView({ behavior: 'smooth' });
+      questionEls?.[targetIndex]?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
