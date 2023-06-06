@@ -11,4 +11,6 @@ It provides a convenient question sidebar directory for the ChatGPT official web
 
 ## Demo
 
+> 👉 [An online ChatGPT share page demo](https://chat.openai.com/share/7653a873-494f-4d71-82a1-04dd6defcb0f)
+
 ![demo](https://raw.githubusercontent.com/JianJroh/chatgpt-question-navigator/main/assets/demo.gif)
