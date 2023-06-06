@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { queryChatContainer } from './helpers';
+import { queryQuestionEls } from './helpers';
 import { useQuestions } from './hooks/useQuestions';
 import { useActiveQuestionIndex } from './hooks/useActiveQuestionIndex';
 import { useHovering } from './hooks/common/useHovering';
@@ -12,12 +12,12 @@ function App() {
   const [open, setOpen] = useState(true);
   const show = useMemo(() => open || hovering, [hovering, open]);
 
-  const chatContainer = useMountedCallbackValue(queryChatContainer);
+  const questionEls = useMountedCallbackValue(queryQuestionEls);
 
   const handleClickList: React.MouseEventHandler<HTMLUListElement> = (event) => {
     if (event.target instanceof HTMLLIElement) {
       const targetIndex = Number(event.target.dataset.index);
-      chatContainer.current?.children[targetIndex * 2].scrollIntoView({ behavior: 'smooth' });
+      questionEls.current?.[targetIndex]?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 

@@ -1,5 +1,6 @@
 import { load, remove } from './main.tsx';
 import { queryChatContainer, queryQuestionEls } from './helpers';
+import { isSharePage, scrollMarginTop } from './helpers/sharePage.ts';
 
 let loaded = false;
 let conversationId: string | null = null;
@@ -7,7 +8,9 @@ let conversationId: string | null = null;
 setInterval(() => {
   const latestConversationId = getConversationIdByUrl();
 
-  const hasQuestion = queryChatContainer() != null && queryQuestionEls().length > 0;
+  const questionEls = (queryChatContainer() && queryQuestionEls()) ?? [];
+
+  const hasQuestion = questionEls.length > 0;
 
   if (conversationId !== latestConversationId || !hasQuestion) {
     conversationId = latestConversationId;
@@ -18,6 +21,11 @@ setInterval(() => {
   if (!loaded && hasQuestion) {
     load();
     loaded = true;
+    if (isSharePage) {
+      questionEls.forEach((q) => {
+        q.style.scrollMarginTop = scrollMarginTop + 'px';
+      });
+    }
   }
 }, 600);
 
