@@ -24,6 +24,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
+      - name: Check type
+        run: pnpm check:type
+
       - name: Check lint
         run: pnpm lint
 

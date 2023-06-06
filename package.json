@@ -19,6 +19,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "check:type": "tsc",
     "lint": "eslint . --ext ts,tsx",
     "release": "npx bumpp --commit --tag --push"
   },
