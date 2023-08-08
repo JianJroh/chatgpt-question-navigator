@@ -7,14 +7,9 @@ export function queryChatContainer() {
 
 export function queryQuestionEls() {
   const CHAT_ITEM_EL_CLASS = 'group';
-  return Array.from((queryChatContainer()?.children ?? []) as HTMLDivElement[]).reduce<
-    HTMLDivElement[]
-  >((questions, child, index) => {
-    if (child.classList.contains(CHAT_ITEM_EL_CLASS) && index % 2 === 0) {
-      questions.push(child);
-    }
-    return questions;
-  }, []);
+  return Array.from((queryChatContainer()?.children ?? []) as HTMLDivElement[])
+    .filter((child) => child.classList.contains(CHAT_ITEM_EL_CLASS))
+    .filter((_, index) => index % 2 === 0);
 }
 
 export function className2Selector(className: string) {
