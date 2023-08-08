@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useQuestionEls } from './hooks/useQuestionEls';
 import { useActiveQuestionIndex } from './hooks/useActiveQuestionIndex';
 import { useHovering } from './hooks/common/useHovering';
+import { isSharePage } from './helpers/sharePage';
 
 function App() {
   const { questions, questionEls } = useQuestionEls();
@@ -13,6 +14,12 @@ function App() {
   const handleClickList: React.MouseEventHandler<HTMLUListElement> = (event) => {
     if (event.target instanceof HTMLLIElement) {
       const targetIndex = Number(event.target.dataset.index);
+      if (!isSharePage) {
+        const isScrollUp = activeQuestionIndex != null && targetIndex < activeQuestionIndex;
+        questionEls.forEach((q) => {
+          q.style.scrollMarginTop = isScrollUp ? '60px' : '0';
+        });
+      }
       questionEls?.[targetIndex]?.scrollIntoView({ behavior: 'smooth' });
     }
   };
