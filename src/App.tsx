@@ -15,9 +15,8 @@ function App() {
     if (event.target instanceof HTMLLIElement) {
       const targetIndex = Number(event.target.dataset.index);
       if (!isSharePage) {
-        const isScrollUp = activeQuestionIndex != null && targetIndex < activeQuestionIndex;
         questionEls.forEach((q) => {
-          q.style.scrollMarginTop = isScrollUp ? '60px' : '0';
+          q.style.scrollMarginTop = '56px';
         });
       }
       questionEls?.[targetIndex]?.scrollIntoView({ behavior: 'smooth' });

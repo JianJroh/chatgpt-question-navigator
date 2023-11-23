@@ -6,9 +6,8 @@ export function queryChatContainer() {
 }
 
 export function queryQuestionEls() {
-  const CHAT_ITEM_EL_CLASS = 'group';
   return Array.from((queryChatContainer()?.children ?? []) as HTMLDivElement[])
-    .filter((child) => child.classList.contains(CHAT_ITEM_EL_CLASS))
+    .filter((child) => child.hasAttribute('data-testid'))
     .filter((_, index) => index % 2 === 0);
 }
 

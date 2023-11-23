@@ -6,7 +6,13 @@ import { useMountedCallbackValue } from './common/useMountedCallbackValue';
 export function useQuestionEls() {
   const [questionEls, setQuestionEls] = useState(queryQuestionEls());
 
-  const questions = useMemo(() => questionEls.map((q) => q.innerText.trim() ?? ''), [questionEls]);
+  const questions = useMemo(
+    () =>
+      questionEls
+        .map((q) => q.querySelector<HTMLDivElement>('[data-message-author-role]')?.innerText)
+        .filter((s): s is string => !!s),
+    [questionEls]
+  );
 
   const chatContainer = useMountedCallbackValue(queryChatContainer);
 
