@@ -21,7 +21,7 @@
     "build": "vite build",
     "check:type": "tsc",
     "lint": "eslint . --ext ts,tsx",
-    "release": "npx bumpp --commit --tag --push"
+    "release": "bumpp --commit --tag --push"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -36,6 +36,7 @@
     "@unocss/preset-attributify": "^0.51.12",
     "@unocss/transformer-variant-group": "^0.51.12",
     "@vitejs/plugin-react": "^4.0.0",
+    "bumpp": "^9.5.2",
     "eslint": "^8.39.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
