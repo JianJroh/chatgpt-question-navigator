@@ -22,7 +22,7 @@ export default defineConfig({
             '为ChatGPT官网提供了一个便捷的问题侧边栏目录。它能够自动搜集当前会话页面的用户提的问题，并展示在侧边栏上，提供快速导航到历史问题的位置的能力。',
         },
         namespace: 'npm/chatgpt-question-navigator',
-        match: ['https://chat.openai.com/**'],
+        match: ['https://chatgpt.com/**'],
         author: 'okokdi',
         supportURL: 'https://github.com/JianJroh/chatgpt-question-navigator/issues',
         license: 'GPL-3.0-or-later',
